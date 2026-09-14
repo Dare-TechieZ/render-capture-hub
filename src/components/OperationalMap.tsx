@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
+import "leaflet/dist/leaflet.css";
 import type { Plan } from "@/lib/responsegrid";
-
 type OperationalMapProps = { plan: Plan };
 
 export function OperationalMap({ plan }: OperationalMapProps) {
