@@ -189,7 +189,7 @@ export function calculatePlan(incident: Incident): Plan {
 
   const selected = candidates.slice(0, Math.max(1, Math.min(incident.maxAssets, candidates.length)));
   const selectedAssets = selected.map((asset, index) => {
-    const capability = asset.skimmerCapacityTph >= 6 || asset.boomsM >= 450 ? "High" : asset.skimmerCapacityTph >= 2 || asset.boomsM >= 150 ? "Medium" : "Low";
+    const capability: PlanAsset["capability"] = asset.skimmerCapacityTph >= 6 || asset.boomsM >= 450 ? "High" : asset.skimmerCapacityTph >= 2 || asset.boomsM >= 150 ? "Medium" : "Low";
     const reason = asset.distanceKm <= 25
       ? `Closest ${capability.toLowerCase()}-capability unit with ${asset.boomsM.toLocaleString()} m boom and ${asset.skimmerCapacityTph.toFixed(1)} t/h recovery.`
       : `Strong ${asset.specialization.toLowerCase()} fit with ${asset.etaMinutes} min ETA and ${asset.crewCount} crew available.`;

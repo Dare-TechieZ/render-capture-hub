@@ -30,10 +30,11 @@ export function OperationalMap({ plan }: OperationalMapProps) {
         const incidentIcon = L.divIcon({ className: "map-pin map-pin-incident", html: "<span>!</span>", iconSize: [34, 34], iconAnchor: [17, 17] });
         L.marker([plan.incident.latitude, plan.incident.longitude], { icon: incidentIcon }).bindTooltip(`INCIDENT · ${plan.incident.severity.toUpperCase()}`).addTo(layerGroup);
         plan.candidates.slice(0, 22).forEach((asset) => {
-          const selected = plan.selectedAssets.some((item) => item.assetId === asset.assetId);
+          const selectedAsset = plan.selectedAssets.find((item) => item.assetId === asset.assetId);
+          const selected = Boolean(selectedAsset);
           const unavailable = asset.status === "Unavailable";
           const color = selected ? selectedColor : unavailable ? mutedColor : availableColor;
-          const icon = L.divIcon({ className: `map-pin ${selected ? "map-pin-selected" : unavailable ? "map-pin-unavailable" : "map-pin-available"}`, html: `<span>${selected ? asset.rank : ""}</span>`, iconSize: [selected ? 27 : 17, selected ? 27 : 17], iconAnchor: [selected ? 13 : 8, selected ? 13 : 8] });
+          const icon = L.divIcon({ className: `map-pin ${selected ? "map-pin-selected" : unavailable ? "map-pin-unavailable" : "map-pin-available"}`, html: `<span>${selectedAsset?.rank ?? ""}</span>`, iconSize: [selected ? 27 : 17, selected ? 27 : 17], iconAnchor: [selected ? 13 : 8, selected ? 13 : 8] });
           L.marker([asset.latitude, asset.longitude], { icon }).bindTooltip(`${asset.assetName}<br>${asset.distanceKm} km · ${asset.etaMinutes} min`).addTo(layerGroup);
           if (selected) {
             L.polyline([[asset.latitude, asset.longitude], [plan.incident.latitude, plan.incident.longitude]], { color, weight: 2, opacity: 0.7, dashArray: "4 5" }).addTo(layerGroup);

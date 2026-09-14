@@ -10,33 +10,128 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiAssetsRouteImport } from './routes/api/assets'
+import { Route as ApiEnvironmentRouteImport } from './routes/api/environment'
+import { Route as ApiHealthRouteImport } from './routes/api/health'
+import { Route as ApiInfrastructureRouteImport } from './routes/api/infrastructure'
+import { Route as ApiPlanRouteImport } from './routes/api/plan'
+import { Route as ApiTacticalBriefRouteImport } from './routes/api/tactical/brief'
+import { Route as ApiTacticalGeojsonRouteImport } from './routes/api/tactical/geojson'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAssetsRoute = ApiAssetsRouteImport.update({
+  id: '/api/assets',
+  path: '/api/assets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiEnvironmentRoute = ApiEnvironmentRouteImport.update({
+  id: '/api/environment',
+  path: '/api/environment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiHealthRoute = ApiHealthRouteImport.update({
+  id: '/api/health',
+  path: '/api/health',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiInfrastructureRoute = ApiInfrastructureRouteImport.update({
+  id: '/api/infrastructure',
+  path: '/api/infrastructure',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPlanRoute = ApiPlanRouteImport.update({
+  id: '/api/plan',
+  path: '/api/plan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiTacticalBriefRoute = ApiTacticalBriefRouteImport.update({
+  id: '/api/tactical/brief',
+  path: '/api/tactical/brief',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiTacticalGeojsonRoute = ApiTacticalGeojsonRouteImport.update({
+  id: '/api/tactical/geojson',
+  path: '/api/tactical/geojson',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/api/assets': typeof ApiAssetsRoute
+  '/api/environment': typeof ApiEnvironmentRoute
+  '/api/health': typeof ApiHealthRoute
+  '/api/infrastructure': typeof ApiInfrastructureRoute
+  '/api/plan': typeof ApiPlanRoute
+  '/api/tactical/brief': typeof ApiTacticalBriefRoute
+  '/api/tactical/geojson': typeof ApiTacticalGeojsonRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/api/assets': typeof ApiAssetsRoute
+  '/api/environment': typeof ApiEnvironmentRoute
+  '/api/health': typeof ApiHealthRoute
+  '/api/infrastructure': typeof ApiInfrastructureRoute
+  '/api/plan': typeof ApiPlanRoute
+  '/api/tactical/brief': typeof ApiTacticalBriefRoute
+  '/api/tactical/geojson': typeof ApiTacticalGeojsonRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/api/assets': typeof ApiAssetsRoute
+  '/api/environment': typeof ApiEnvironmentRoute
+  '/api/health': typeof ApiHealthRoute
+  '/api/infrastructure': typeof ApiInfrastructureRoute
+  '/api/plan': typeof ApiPlanRoute
+  '/api/tactical/brief': typeof ApiTacticalBriefRoute
+  '/api/tactical/geojson': typeof ApiTacticalGeojsonRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/api/assets'
+    | '/api/environment'
+    | '/api/health'
+    | '/api/infrastructure'
+    | '/api/plan'
+    | '/api/tactical/brief'
+    | '/api/tactical/geojson'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/api/assets'
+    | '/api/environment'
+    | '/api/health'
+    | '/api/infrastructure'
+    | '/api/plan'
+    | '/api/tactical/brief'
+    | '/api/tactical/geojson'
+  id:
+    | '__root__'
+    | '/'
+    | '/api/assets'
+    | '/api/environment'
+    | '/api/health'
+    | '/api/infrastructure'
+    | '/api/plan'
+    | '/api/tactical/brief'
+    | '/api/tactical/geojson'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApiAssetsRoute: typeof ApiAssetsRoute
+  ApiEnvironmentRoute: typeof ApiEnvironmentRoute
+  ApiHealthRoute: typeof ApiHealthRoute
+  ApiInfrastructureRoute: typeof ApiInfrastructureRoute
+  ApiPlanRoute: typeof ApiPlanRoute
+  ApiTacticalBriefRoute: typeof ApiTacticalBriefRoute
+  ApiTacticalGeojsonRoute: typeof ApiTacticalGeojsonRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +143,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/assets': {
+      id: '/api/assets'
+      path: '/api/assets'
+      fullPath: '/api/assets'
+      preLoaderRoute: typeof ApiAssetsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/environment': {
+      id: '/api/environment'
+      path: '/api/environment'
+      fullPath: '/api/environment'
+      preLoaderRoute: typeof ApiEnvironmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/health': {
+      id: '/api/health'
+      path: '/api/health'
+      fullPath: '/api/health'
+      preLoaderRoute: typeof ApiHealthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/infrastructure': {
+      id: '/api/infrastructure'
+      path: '/api/infrastructure'
+      fullPath: '/api/infrastructure'
+      preLoaderRoute: typeof ApiInfrastructureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/plan': {
+      id: '/api/plan'
+      path: '/api/plan'
+      fullPath: '/api/plan'
+      preLoaderRoute: typeof ApiPlanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/tactical/brief': {
+      id: '/api/tactical/brief'
+      path: '/api/tactical/brief'
+      fullPath: '/api/tactical/brief'
+      preLoaderRoute: typeof ApiTacticalBriefRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/tactical/geojson': {
+      id: '/api/tactical/geojson'
+      path: '/api/tactical/geojson'
+      fullPath: '/api/tactical/geojson'
+      preLoaderRoute: typeof ApiTacticalGeojsonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApiAssetsRoute: ApiAssetsRoute,
+  ApiEnvironmentRoute: ApiEnvironmentRoute,
+  ApiHealthRoute: ApiHealthRoute,
+  ApiInfrastructureRoute: ApiInfrastructureRoute,
+  ApiPlanRoute: ApiPlanRoute,
+  ApiTacticalBriefRoute: ApiTacticalBriefRoute,
+  ApiTacticalGeojsonRoute: ApiTacticalGeojsonRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
