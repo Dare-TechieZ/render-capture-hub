@@ -16,6 +16,11 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        header: "border border-header-button-border bg-header-button text-header-button-foreground hover:bg-header-button-hover",
+        headerAction: "bg-rust text-rust-foreground hover:bg-rust/90",
+        tactical: "bg-rust text-rust-foreground hover:bg-rust/90",
+        tacticalOutline: "border border-navy-border bg-transparent text-navy-foreground hover:bg-navy-inset",
+        tacticalIcon: "border border-navy-border bg-transparent text-navy-foreground hover:bg-navy-inset",
       },
       size: {
         default: "h-9 px-4 py-2",
