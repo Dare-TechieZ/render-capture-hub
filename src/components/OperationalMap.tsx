@@ -260,10 +260,10 @@ export function OperationalMap({ plan }: OperationalMapProps) {
   }, [plan]);
 
   return (
-    <div
-      ref={containerRef}
-      className="h-full min-h-[420px] w-full"
-      aria-label="Operational map showing incident, assets, and deployment lines"
-    />
-  );
+  <div
+    ref={containerRef}
+    className="map-canvas"
+    aria-label="Operational map showing incident, assets, and deployment lines"
+  />
+);
 }
